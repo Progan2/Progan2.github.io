@@ -1,0 +1,61 @@
+/* Стили CSS */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    display: flex;
+}
+
+aside {
+    padding: 1em;
+    background-color: #a3a3a3;
+    width: 200px;
+    position: relative;
+    z-index: 2;
+}
+
+main {
+    padding: 1em;
+    background-color: rgb(255, 191, 71);
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
