@@ -1,5 +1,10 @@
 // scripts.js
 
+const existingUser = {
+    email: 'test@example.com',
+    password: 'password123'
+};
+
 function showLogin() {
     document.getElementById('login-modal').classList.remove('hidden');
 }
@@ -19,11 +24,14 @@ function closeModal(modalId) {
 function login() {
     var email = document.getElementById('login-email').value;
     var password = document.getElementById('login-password').value;
-    if (email && password) {
+    if (email === existingUser.email && password === existingUser.password) {
         document.getElementById('user-settings').classList.remove('hidden');
         document.getElementById('login-link').classList.add('hidden');
         document.getElementById('register-link').classList.add('hidden');
+        document.getElementById('username').innerText = 'User';
         closeModal('login-modal');
+    } else {
+        alert('Invalid email or password.');
     }
 }
 
@@ -32,7 +40,10 @@ function register() {
     var password = document.getElementById('register-password').value;
     var confirmPassword = document.getElementById('confirm-password').value;
     if (email && password && password === confirmPassword) {
+        alert('Registration successful!');
         closeModal('register-modal');
+    } else {
+        alert('Please check your inputs.');
     }
 }
 

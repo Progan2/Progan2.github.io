@@ -75,17 +75,17 @@
     <!-- Modals for login, register, and settings -->
     <div id="login-modal" class="modal hidden">
         <h2>Login</h2>
-        <input type="email" id="login-email" placeholder="Email">
-        <input type="password" id="login-password" placeholder="Password">
+        <input type="email" id="login-email" placeholder="Email" required>
+        <input type="password" id="login-password" placeholder="Password" required>
         <button onclick="login()">Login</button>
         <button onclick="closeModal('login-modal')">Close</button>
     </div>
 
     <div id="register-modal" class="modal hidden">
         <h2>Register</h2>
-        <input type="email" id="register-email" placeholder="Email">
-        <input type="password" id="register-password" placeholder="Password">
-        <input type="password" id="confirm-password" placeholder="Confirm Password">
+        <input type="email" id="register-email" placeholder="Email" required>
+        <input type="password" id="register-password" placeholder="Password" required>
+        <input type="password" id="confirm-password" placeholder="Confirm Password" required>
         <button onclick="register()">Register</button>
         <button onclick="closeModal('register-modal')">Close</button>
     </div>

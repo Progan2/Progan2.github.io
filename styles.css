@@ -35,14 +35,14 @@ header nav ul li a {
 
 aside {
     width: 250px;
-    background-color: #a3a3a3; /* Серый цвет для боковой панели */
+    background-color: #d3d3d3; /* Серый цвет для боковой панели */
     padding: 15px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 main {
     flex-grow: 1;
-    background-color:rgb(255, 191, 71); /* Темно-желтый цвет для основной панели */
+    background-color: #c19a6b; /* Темно-желтый цвет для основной панели */
     padding: 15px;
 }
 
@@ -68,7 +68,7 @@ main {
     transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;
-    border: 1px solid #707070;
+    border: 1px solid #ccc;
     z-index: 1000;
 }
 
