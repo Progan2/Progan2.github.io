@@ -3,50 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Registration and Login</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Dungeons & Dragons</title>
+    <style>
+        body {
+            background-color: #232323;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #header {
+            background-color: #232323;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        #sidebar {
+            width: 200px;
+            height: 100%;
+            background-color: #363636;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            padding-top: 60px;
+        }
+        #sidebar h2 {
+            color: white;
+            text-align: center;
+        }
+        #character-container {
+            margin-left: 220px;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .character {
+            background-color: yellow;
+            color: black;
+            width: calc(33.33% - 20px);
+            margin: 10px;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .login-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            z-index: 999;
+        }
+        .login-form input[type="text"], .login-form input[type="password"] {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        .login-form button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .close-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Simple Registration and Login</h1>
-    </header>
-    <div class="container">
-        <button onclick="showLogin()">Login</button>
-        <button onclick="showRegister()">Register</button>
-        <div id="user-info" class="hidden">
-            <h2>Welcome, <span id="display-username"></span>!</h2>
-            <p>Last login: <span id="last-login"></span></p>
+    <div id="header">
+        <h1>Welcome to the Dungeons & Dragons Website</h1>
+        <nav>
+            <a href="#">Home</a> |
+            <a href="#">About</a> |
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+    <div id="sidebar">
+        <h2>Account</h2>
+        <div id="account-status" style="text-align: center;">
+            <div id="status-indicator" style="width: 20px; height: 20px; background-color: red; border-radius: 50%; margin: 10px auto;"></div>
+            <button class="login-button" onclick="toggleLoginForm()">Login / Register</button>
         </div>
     </div>
-
-    <!-- Login Modal -->
-    <div id="login-modal" class="modal">
-        <div class="modal-content">
-            <h2>Login</h2>
-            <form id="login-form" onsubmit="event.preventDefault(); login();">
-                <input type="text" id="login-username" placeholder="Username" required>
-                <input type="password" id="login-password" placeholder="Password" required>
-                <button type="submit">Login</button>
-                <button type="button" onclick="closeModal('login-modal')">Close</button>
-            </form>
+    <div id="character-container">
+        <!-- Character 1 -->
+        <div class="character">
+            <h2>Character 1</h2>
+            <p>Name: John Doe</p>
+            <p>Background: Lorem ipsum dolor sit amet</p>
+            <p>Class: Wizard</p>
+            <p>Level: 5</p>
+            <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <!-- Character 2 -->
+        <div class="character">
+            <h2>Character 2</h2>
+            <p>Name: Jane Smith</p>
+            <p>Background: Lorem ipsum dolor sit amet</p>
+            <p>Class: Rogue</p>
+            <p>Level: 3</p>
+            <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+        <!-- Character 3 -->
+        <div class="character">
+            <h2>Character 3</h2>
+            <p>Name: Alex Johnson</p>
+            <p>Background: Lorem ipsum dolor sit amet</p>
+            <p>Class: Fighter</p>
+            <p>Level: 4</p>
+            <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
     </div>
-
-    <!-- Register Modal -->
-    <div id="register-modal" class="modal">
-        <div class="modal-content">
-            <h2>Register</h2>
-            <form id="register-form" onsubmit="event.preventDefault(); register();">
-                <input type="text" id="register-username" placeholder="Username" required>
-                <input type="email" id="register-email" placeholder="Email" required>
-                <input type="password" id="register-password" placeholder="Password" required>
-                <input type="password" id="confirm-password" placeholder="Confirm Password" required>
-                <button type="submit">Register</button>
-                <button type="button" onclick="closeModal('register-modal')">Close</button>
-            </form>
-        </div>
+    <div class="login-form" id="loginForm">
+        <span class="close-button" onclick="toggleLoginForm()">x</span>
+        <form action="#" method="post">
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <button type="submit" onclick="authenticateUser()">Login</button>
+        </form>
     </div>
-
-    <script src="scripts.js"></script>
+    <script>
+        function toggleLoginForm() {
+            var loginForm = document.getElementById("loginForm");
+            loginForm.style.display === "none" ? loginForm.style.display = "block" : loginForm.style.display = "none";
+        }
+    </script>
+    <script>
+        function toggleLoginForm() {
+            var loginForm = document.getElementById("loginForm");
+            loginForm.style.display === "none" ? loginForm.style.display = "block" : loginForm.style.display = "none";
+        }
+    
+        function authenticateUser() {
+            var username = document.querySelector('input[name="username"]').value;
+            var password = document.querySelector('input[name="password"]').value;
+    
+            if (username === "man" && password === "123") {
+                var statusIndicator = document.getElementById("status-indicator");
+                statusIndicator.style.backgroundColor = "green"; // Изменение цвета на зеленый
+                toggleLoginForm(); // Скрыть форму после успешной аутентификации
+            } else {
+                alert("Incorrect username or password");
+            }
+        }
+    </script>
+    
+    
 </body>
 </html>
