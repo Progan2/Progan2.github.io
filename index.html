@@ -97,13 +97,20 @@
             <a href="#">Contact</a>
         </nav>
     </div>
+
     <div id="sidebar">
         <h2>Account</h2>
         <div id="account-status" style="text-align: center;">
             <div id="status-indicator" style="width: 20px; height: 20px; background-color: red; border-radius: 50%; margin: 10px auto;"></div>
-            <button class="login-button" onclick="toggleLoginForm()">Login / Register</button>
+            <button class="login-button" onclick="toggleLoginForm()">Login</button>
+            <button class="login-button" onclick="toggleRegisterForm()">Register</button>
+            <button class="login-button" onclick="logout()">Logout</button>
         </div>
     </div>
+    
+
+
+
     <div id="character-container">
         <!-- Character 1 -->
         <div class="character">
@@ -133,39 +140,103 @@
             <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
         </div>
     </div>
+
+    <div class="register-form" id="registerForm" style="display: none;">
+        <span class="close-button" onclick="toggleRegisterForm()">x</span>
+        <form>
+            <input type="text" id="new-username" placeholder="New Username">
+            <input type="password" id="new-password" placeholder="New Password">
+            <button type="button" onclick="registerUser()">Register</button>
+        </form>
+    </div>
+    
+
     <div class="login-form" id="loginForm">
         <span class="close-button" onclick="toggleLoginForm()">x</span>
         <form action="#" method="post">
             <input type="text" name="username" placeholder="Username">
             <input type="password" name="password" placeholder="Password">
-            <button type="submit" onclick="authenticateUser()">Login</button>
+            <button type="submit" onclick="authenticateUser(event)">Login</button>
         </form>
     </div>
+
+
+
     <script>
         function toggleLoginForm() {
             var loginForm = document.getElementById("loginForm");
             loginForm.style.display === "none" ? loginForm.style.display = "block" : loginForm.style.display = "none";
         }
     </script>
-    <script>
-        function toggleLoginForm() {
-            var loginForm = document.getElementById("loginForm");
-            loginForm.style.display === "none" ? loginForm.style.display = "block" : loginForm.style.display = "none";
+
+
+<script>
+    function toggleLoginForm() {
+        var loginForm = document.getElementById("loginForm");
+        loginForm.style.display === "none" ? loginForm.style.display = "block" : loginForm.style.display = "none";
+    }
+
+    function authenticateUser(event) {
+        event.preventDefault(); // Предотвращение отправки формы по умолчанию
+
+        var username = document.querySelector('input[name="username"]').value;
+        var password = document.querySelector('input[name="password"]').value;
+
+        if (username === "man" && password === "123") {
+            var statusIndicator = document.getElementById("status-indicator");
+            statusIndicator.style.backgroundColor = "green"; // Изменение цвета на зеленый
+            toggleLoginForm(); // Скрыть форму после успешной аутентификации
+        } else {
+            alert("Incorrect username or password");
         }
-    
-        function authenticateUser() {
-            var username = document.querySelector('input[name="username"]').value;
-            var password = document.querySelector('input[name="password"]').value;
-    
-            if (username === "man" && password === "123") {
-                var statusIndicator = document.getElementById("status-indicator");
-                statusIndicator.style.backgroundColor = "green"; // Изменение цвета на зеленый
-                toggleLoginForm(); // Скрыть форму после успешной аутентификации
-            } else {
-                alert("Incorrect username or password");
-            }
+    }
+
+    function logout() {
+        var statusIndicator = document.getElementById("status-indicator");
+        statusIndicator.style.backgroundColor = "red"; // Изменение цвета на красный
+    }
+</script>
+
+<script>
+    function toggleLoginForm() {
+        var loginForm = document.getElementById("loginForm");
+        loginForm.style.display === "none" ? loginForm.style.display = "block" : loginForm.style.display = "none";
+    }
+
+    function authenticateUser(event) {
+        event.preventDefault(); // Предотвращение отправки формы по умолчанию
+
+        var username = document.querySelector('input[name="username"]').value;
+        var password = document.querySelector('input[name="password"]').value;
+
+        if (username === "man" && password === "123") {
+            var statusIndicator = document.getElementById("status-indicator");
+            statusIndicator.style.backgroundColor = "green"; // Изменение цвета на зеленый
+            toggleLoginForm(); // Скрыть форму после успешной аутентификации
+        } else {
+            alert("Incorrect username or password");
         }
-    </script>
+    }
+
+    function registerUser() {
+        var username = document.querySelector('input[name="username"]').value;
+        var password = document.querySelector('input[name="password"]').value;
+
+        // В реальном приложении здесь должен быть код отправки данных на сервер
+        // Здесь просто выведем алерт с данными для демонстрации
+        alert("New user registered!\nUsername: " + username + "\nPassword: " + password);
+    }
+
+    function logout() {
+        var statusIndicator = document.getElementById("status-indicator");
+        statusIndicator.style.backgroundColor = "red"; // Изменение цвета на красный
+    }
+</script>
+
+
+
+
+    
     
     
 </body>
